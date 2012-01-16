@@ -10,7 +10,7 @@ namespace OrderImport
     {
         public IEnumerable<Order> Parse(string orderXml)
         {
-            var orderElements = XElement.Parse(orderXml);
+            var orderElements = XElement.Parse(orderXml.Replace("&","&amp;"));
             var orders = from order in orderElements.Elements()
                          select
                              new Order
